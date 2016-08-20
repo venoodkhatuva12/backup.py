@@ -1,4 +1,6 @@
 #!/usr/bin/python
+#Author: Vinod.N K
+#Distro : Linux -Centos, Rhel, and any fedora
 import os
 
 ###Changes made from here
