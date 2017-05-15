@@ -73,11 +73,11 @@ def check_mysql_backup(command):
 def find_leaf(lastpart):
 	print "lastpart is %s" %lastpart
 
-	if((lastpart == "Scripts/") or (lastpart == "moofwd-logo/") or (lastpart == "svn_month/") or (lastpart == "svn/") or (lastpart == "git/") or (lastpart == "Jira/") or (lastpart == "Upload/") or (lastpart == "new folder/")):
-		print "skiping path s3://moofwd_backup/%s" %lastpart
+	if((lastpart == "Scripts/") or (lastpart == "dir-logo/") or (lastpart == "svn_month/") or (lastpart == "svn/") or (lastpart == "git/") or (lastpart == "Jira/") or (lastpart == "Upload/") or (lastpart == "new folder/")):
+		print "skiping path s3://dir_backup/%s" %lastpart
 		return
 
-	command = "sudo s3cmd ls s3://moofwd_backup/%s > /tmp/root_objects" %lastpart
+	command = "sudo s3cmd ls s3://dir_backup/%s > /tmp/root_objects" %lastpart
 	print command
 	func_end = 0
 	all_objects = os.system("%s" %command)
@@ -96,11 +96,11 @@ def find_leaf(lastpart):
 				return
 			return	
 	if(len(child_objects) == 0):
-		print "No backup found in s3://moofwd_backup/%s" %lastpart
+		print "No backup found in s3://dir_backup/%s" %lastpart
 		return
 	elif(len(child_objects) == 1):
 		if (lastpart.endswith("%s/"%child_objects[0])):
-			print "No backup found in s3://moofwd_backup/%s"%lastpart
+			print "No backup found in s3://dir_backup/%s"%lastpart
 			return
 	print child_objects
 	f.close
